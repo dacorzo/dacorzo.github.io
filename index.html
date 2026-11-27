@@ -104,13 +104,13 @@
       </div>
     </div>
 
-    <!-- Bottom-Right ASCII Globe (Goldilocks scale: big, cropped at bottom-right, zero text overlap) -->
+    <!-- Bottom-Right ASCII Globe (Balanced midpoint scale & position) -->
     <div
       id="earth-wrapper"
       title="Drag to rotate, click to pause"
-      class="hidden md:block absolute right-[-18%] lg:right-[-15%] xl:right-[-12%] bottom-[-24%] lg:bottom-[-22%] z-0 cursor-grab active:cursor-grabbing select-none"
+      class="hidden md:block absolute right-[-13%] lg:right-[-10%] xl:right-[-8%] bottom-[-21%] lg:bottom-[-19%] z-0 cursor-grab active:cursor-grabbing select-none"
     >
-      <pre id="ascii-earth" class="text-[10.5px] lg:text-[11.5px] xl:text-[12.5px] text-cobalt/90"></pre>
+      <pre id="ascii-earth" class="text-[11px] lg:text-[12.5px] xl:text-[13.5px] text-cobalt/90"></pre>
     </div>
 
   </section>
@@ -428,7 +428,7 @@
       const sinTilt = Math.sin(tilt);
 
       function renderFrame() {
-        const rows = 54;
+        const rows = 58;
         const cols = Math.round(rows / charAspect);
 
         const lx = -0.55, ly = 0.42, lz = 0.72;
