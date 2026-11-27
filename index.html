@@ -1,1 +1,256 @@
-<h1>Hello, world!</h1><p>Welcome to my site.</p>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Corzo — Data Science, Finance & Ventures</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#103713',
+            lime: '#abeb68',
+            cream: '#F6F5F0',
+            ink: '#141715',
+            muted: '#5A635C',
+          },
+          fontFamily: {
+            serif: ['"Instrument Serif"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream text-ink font-sans antialiased selection:bg-lime selection:text-forest">
+
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-ink/10">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-mono text-sm font-medium tracking-tight text-forest">
+        dacorzo<span class="text-muted">.github.io</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="#work" class="hover:text-forest transition-colors">Ventures & Work</a>
+        <a href="#stack" class="hover:text-forest transition-colors">Stack</a>
+        <a href="#contact" class="px-4 py-1.5 rounded-full bg-forest text-lime hover:bg-forest/90 transition-all">
+          Get in touch
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6">
+
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28 border-b border-ink/10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-forest/5 border border-forest/15 text-xs font-mono text-forest mb-8">
+        <span class="w-2 h-2 rounded-full bg-forest animate-pulse"></span>
+        Mexico City · Data Science & Finance @ ITAM
+      </div>
+
+      <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl leading-[0.95] tracking-tight text-ink max-w-4xl">
+        Building at the intersection of <span class="italic text-forest">quantitative rigor</span>, climate tech, and consumer ventures.
+      </h1>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+        <p class="md:col-span-7 text-lg text-muted leading-relaxed">
+          I'm <strong class="text-ink font-semibold">David Corzo</strong>. I build automated competitive intelligence pipelines, model financial systems, and launch products from scratch—ranging from recruiting platforms to direct-to-consumer operations.
+        </p>
+        <div class="md:col-span-5 flex flex-wrap md:justify-end gap-3">
+          <a href="#work" class="px-6 py-3 rounded-xl bg-forest text-cream font-medium text-sm hover:translate-y-[-2px] transition-all shadow-sm">
+            Explore Selected Work ↓
+          </a>
+          <a href="https://github.com/dacorzo" target="_blank" class="px-6 py-3 rounded-xl border border-ink/20 text-ink font-medium text-sm hover:bg-ink/5 transition-all">
+            GitHub Profile ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Work (Asymmetric Bento Grid) -->
+    <section id="work" class="py-20 border-b border-ink/10">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-muted">01 / Portfolio</span>
+          <h2 class="font-serif text-4xl md:text-5xl mt-1">Selected Ventures & Projects</h2>
+        </div>
+        <p class="text-sm text-muted max-w-xs">
+          A mix of venture analytics, software products, and real-world operations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Featured Card 1 -->
+        <article class="md:col-span-7 bg-forest text-cream rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full bg-lime text-forest font-mono text-xs font-medium">
+                Product & Platform
+              </span>
+              <span class="font-mono text-xs text-cream/60">2026</span>
+            </div>
+            <h3 class="font-serif text-3xl md:text-4xl text-lime mb-3">Scout</h3>
+            <p class="text-cream/80 leading-relaxed text-sm md:text-base max-w-lg">
+              A student-to-employer recruiting and candidate-ranking platform designed to match top quantitative and analytical talent with high-growth teams.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-cream/15 flex items-center justify-between">
+            <div class="flex gap-2 font-mono text-xs text-cream/70">
+              <span>Full-Stack</span> · <span>Ranking Algorithms</span>
+            </div>
+            <a href="#" class="text-sm font-medium text-lime group-hover:translate-x-1 transition-transform">
+              Case Study →
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="md:col-span-5 bg-white border border-ink/10 rounded-3xl p-8 flex flex-col justify-between hover:border-forest/40 transition-colors">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full bg-forest/10 text-forest font-mono text-xs font-medium">
+                Venture & Data
+              </span>
+              <span class="font-mono text-xs text-muted">Ongoing</span>
+            </div>
+            <h3 class="font-serif text-3xl mb-3">Climate Tech Venture Review</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              Automated competitive intelligence pipelines, VC dataset analysis in Python & Tableau, and structuring an early-stage climate tech accelerator.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between">
+            <span class="font-mono text-xs text-muted">Python · SQL · Tableau</span>
+            <a href="#" class="text-sm font-semibold text-forest hover:underline">
+              View Insights ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="md:col-span-5 bg-white border border-ink/10 rounded-3xl p-8 flex flex-col justify-between hover:border-forest/40 transition-colors">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full bg-amber-500/15 text-amber-900 font-mono text-xs font-medium">
+                Consumer Venture
+              </span>
+              <span class="font-mono text-xs text-muted">Co-Founder</span>
+            </div>
+            <h3 class="font-serif text-3xl mb-3">La Fondita</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              End-to-end prepared meal-prep delivery venture in Mexico City—managing unit economics, recurring logistics, and digital storefront operations.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between">
+            <span class="font-mono text-xs text-muted">Operations · Unit Economics</span>
+            <a href="https://lafonditamx.com" target="_blank" class="text-sm font-semibold text-forest hover:underline">
+              lafonditamx.com ↗
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="md:col-span-7 bg-[#EAE8DF] border border-ink/10 rounded-3xl p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full bg-ink/10 text-ink font-mono text-xs font-medium">
+                Quantitative Research & Models
+              </span>
+              <span class="font-mono text-xs text-muted">ITAM</span>
+            </div>
+            <h3 class="font-serif text-3xl mb-3">Financial Modeling & Data Pipelines</h3>
+            <p class="text-muted text-sm leading-relaxed max-w-lg">
+              Open-source notebooks and scripts covering derivatives pricing, portfolio optimization, graph databases (Neo4j), and distributed NoSQL architectures.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-ink/10 flex items-center justify-between">
+            <span class="font-mono text-xs text-muted">NumPy · Pandas · SciPy · Oracle SQL</span>
+            <a href="https://github.com/dacorzo" target="_blank" class="text-sm font-semibold text-forest hover:underline">
+              Browse Repos →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Technical & Analytical Stack -->
+    <section id="stack" class="py-20 border-b border-ink/10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div class="md:col-span-4">
+          <span class="font-mono text-xs uppercase tracking-widest text-muted">02 / Toolkit</span>
+          <h2 class="font-serif text-4xl mt-1">Technical & Financial Stack</h2>
+          <p class="text-sm text-muted mt-3 leading-relaxed">
+            Tools I use daily to move from raw data and first-principles math to deployed products.
+          </p>
+        </div>
+
+        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl bg-white border border-ink/10">
+            <h3 class="font-mono text-xs uppercase tracking-wider text-forest font-semibold mb-3">Data Science & Engineering</h3>
+            <p class="text-sm text-ink/80 leading-relaxed">
+              Python (Pandas, NumPy, SciPy, SymPy, Matplotlib), R, Docker, Git, Google Apps Script
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-ink/10">
+            <h3 class="font-mono text-xs uppercase tracking-wider text-forest font-semibold mb-3">Databases & Architecture</h3>
+            <p class="text-sm text-ink/80 leading-relaxed">
+              Oracle SQL, MongoDB, Neo4j (Graph), Apache Cassandra, Firebase
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-ink/10">
+            <h3 class="font-mono text-xs uppercase tracking-wider text-forest font-semibold mb-3">Finance & Valuation</h3>
+            <p class="text-sm text-ink/80 leading-relaxed">
+              Corporate Finance, Derivatives & Options Pricing, Venture Capital Deal Flow, Unit Economics
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white border border-ink/10">
+            <h3 class="font-mono text-xs uppercase tracking-wider text-forest font-semibold mb-3">Analytics & Visualization</h3>
+            <p class="text-sm text-ink/80 leading-relaxed">
+              Tableau Public, Interactive Web Dashboards, Automated Reporting Pipelines
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="py-20">
+      <div class="bg-forest text-cream rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div>
+          <h2 class="font-serif text-4xl md:text-5xl text-lime">Let's build something sharp.</h2>
+          <p class="text-cream/80 mt-2 max-w-md text-sm md:text-base">
+            Open to conversations around climate tech, venture capital, quantitative finance, and ambitious product builds.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="mailto:hello@dacorzo.com" class="px-6 py-3 rounded-xl bg-lime text-forest font-semibold text-sm hover:opacity-90 transition-opacity">
+            Email Me
+          </a>
+          <a href="https://linkedin.com" target="_blank" class="px-6 py-3 rounded-xl border border-cream/25 text-cream font-medium text-sm hover:bg-cream/10 transition-colors">
+            LinkedIn ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-muted gap-4">
+        <span>© 2026 David Corzo. Built and hosted on GitHub Pages.</span>
+        <span>CDMX · 19.4326° N, 99.1332° W</span>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
