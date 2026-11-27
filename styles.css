@@ -29,7 +29,7 @@ body {
   background-color: #f7f5f0;
 }
 
-/* ================= FLOATING LIQUID GLASS PILL ================= */
+/* ================= FLOATING LIQUID GLASS PILLS ================= */
 .liquid-glass-svg {
   position: fixed;
   top: -9999px;
@@ -38,27 +38,34 @@ body {
   opacity: 0;
 }
 
-.liquid-pill {
+.floating-nav {
   position: fixed;
-  top: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 1.35rem;
+  right: 2rem;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.liquid-pill {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.78rem 1.85rem;
+  height: 46px;
+  padding: 0.72rem 1.6rem;
   border-radius: 999px;
   text-decoration: none;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.08) 52%,
-    rgba(255, 255, 255, 0.16) 100%
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0.09) 52%,
+    rgba(255, 255, 255, 0.18) 100%
   );
-  backdrop-filter: blur(4px) saturate(160%) brightness(1.06);
-  -webkit-backdrop-filter: blur(4px) saturate(160%) brightness(1.06);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(6px) saturate(165%) brightness(1.06);
+  -webkit-backdrop-filter: blur(6px) saturate(165%) brightness(1.06);
+  border: 1px solid rgba(255, 255, 255, 0.48);
   box-shadow:
     inset 0 1.5px 1px rgba(255, 255, 255, 0.85),
     inset 0 -1.5px 1.5px rgba(255, 255, 255, 0.45),
@@ -67,7 +74,85 @@ body {
     0 12px 34px rgba(10, 25, 50, 0.22),
     0 2px 8px rgba(10, 25, 50, 0.12);
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+/* Crisp optical rim sheen concentrated along the curved corners */
+.liquid-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from 20deg at 50% 50%,
+    rgba(255, 255, 255, 0.92) 0deg,
+    rgba(255, 255, 255, 0.15) 65deg,
+    rgba(255, 255, 255, 0.9) 145deg,
+    rgba(255, 255, 255, 0.2) 205deg,
+    rgba(255, 255, 255, 0.95) 315deg,
+    rgba(255, 255, 255, 0.92) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.85;
+}
+
+@supports (backdrop-filter: url(#liquid-glass-refraction)) {
+  .liquid-pill {
+    backdrop-filter: url(#liquid-glass-refraction);
+  }
+}
+
+.liquid-pill:hover {
+  transform: translateY(-1.5px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.14) 52%,
+    rgba(255, 255, 255, 0.24) 100%
+  );
+  box-shadow:
+    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.92),
+    inset 0 -1.5px 2px rgba(255, 255, 255, 0.5),
+    inset 3px 0 6px rgba(255, 255, 255, 0.58),
+    inset -3px 0 6px rgba(255, 255, 255, 0.58),
+    0 16px 38px rgba(10, 25, 50, 0.26),
+    0 3px 10px rgba(10, 25, 50, 0.14);
+}
+
+.liquid-pill-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 17px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.14));
+}
+
+.liquid-pill-cta {
+  padding: 0.72rem 1.45rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-dark);
+  white-space: nowrap;
+}
+
+.liquid-pill-cta span {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 /* Crisp optical rim sheen concentrated along the curved corners */
