@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Corzo — Builder, Data Science & Finance</title>
+  <title>David Corzo</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
@@ -16,8 +17,7 @@
             paper: '#F4F1E6',
             paperDark: '#EAE5D5',
             cobalt: '#113285',
-            cobaltMid: '#1C44A6',
-            cobaltLight: '#2B59C3',
+            cobaltMid: '#193F9E',
           },
           fontFamily: {
             title: ['"Baskerville"', '"Libre Baskerville"', 'Georgia', 'serif'],
@@ -29,40 +29,26 @@
     }
   </script>
   <style>
-    /* Blueprint drafting grid on cream paper */
     .blueprint-paper {
       background-color: #F4F1E6;
       background-image:
-        linear-gradient(to right, rgba(17, 50, 133, 0.065) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(17, 50, 133, 0.065) 1px, transparent 1px),
-        linear-gradient(to right, rgba(17, 50, 133, 0.13) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(17, 50, 133, 0.13) 1px, transparent 1px);
+        linear-gradient(to right, rgba(17, 50, 133, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(17, 50, 133, 0.055) 1px, transparent 1px),
+        linear-gradient(to right, rgba(17, 50, 133, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(17, 50, 133, 0.12) 1px, transparent 1px);
       background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
     }
 
-    /* Inverted cyanotype blueprint grid (Image 3 vibe) */
     .blueprint-negative {
       background-color: #113285;
       background-image:
-        linear-gradient(to right, rgba(244, 241, 230, 0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(244, 241, 230, 0.06) 1px, transparent 1px),
-        linear-gradient(to right, rgba(244, 241, 230, 0.13) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(244, 241, 230, 0.13) 1px, transparent 1px);
+        linear-gradient(to right, rgba(244, 241, 230, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(244, 241, 230, 0.05) 1px, transparent 1px),
+        linear-gradient(to right, rgba(244, 241, 230, 0.11) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(244, 241, 230, 0.11) 1px, transparent 1px);
       background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
     }
 
-    /* Subtle paper grain overlay */
-    .paper-grain::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 50;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    /* Technical corner ticks */
     .blueprint-box {
       position: relative;
     }
@@ -74,87 +60,81 @@
       font-size: 11px;
       line-height: 1;
       color: currentColor;
-      opacity: 0.55;
+      opacity: 0.5;
     }
     .blueprint-box::before { top: -6px; left: -4px; }
     .blueprint-box::after { bottom: -6px; right: -4px; }
 
-    /* ASCII Globe styling */
     #ascii-earth {
       font-family: 'JetBrains Mono', monospace;
-      line-height: 0.92;
-      letter-spacing: 0.08em;
+      line-height: 1.0;
+      letter-spacing: 0px;
       user-select: none;
       white-space: pre;
     }
   </style>
 </head>
-<body class="blueprint-paper text-cobalt font-body antialiased selection:bg-cobalt selection:text-paper paper-grain">
+<body class="blueprint-paper text-cobalt font-body antialiased selection:bg-cobalt selection:text-paper">
 
-  <!-- Outer Blueprint Frame -->
-  <div class="min-h-screen border-x border-cobalt/25 max-w-[1380px] mx-auto relative">
+  <div class="min-h-screen border-x border-cobalt/25 max-w-[1360px] mx-auto relative">
 
-    <!-- Top Technical Header Bar -->
+    <!-- Top Navigation -->
     <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-cobalt/25">
       <div class="grid grid-cols-12 items-center px-5 md:px-10 py-3.5 text-xs font-mono">
         <div class="col-span-6 md:col-span-4 flex items-center gap-3">
-          <span class="inline-block w-2.5 h-2.5 border border-cobalt bg-cobalt"></span>
-          <a href="#" class="tracking-widest uppercase font-medium">DACORZO // DWG-01</a>
+          <span class="inline-block w-2.5 h-2.5 bg-cobalt"></span>
+          <a href="#" class="tracking-widest uppercase font-medium">David Corzo</a>
         </div>
 
         <nav class="hidden md:flex col-span-4 justify-center items-center gap-8 tracking-wider uppercase text-[11px]">
-          <a href="#index" class="hover:underline underline-offset-4">/01 Index</a>
-          <a href="#ventures" class="hover:underline underline-offset-4">/02 Ventures</a>
-          <a href="#architecture" class="hover:underline underline-offset-4">/03 Systems</a>
+          <a href="#work" class="hover:underline underline-offset-4">/01 Work</a>
+          <a href="#about" class="hover:underline underline-offset-4">/02 Background</a>
+          <a href="#tools" class="hover:underline underline-offset-4">/03 Stack</a>
           <a href="#contact" class="hover:underline underline-offset-4">/04 Contact</a>
         </nav>
 
         <div class="col-span-6 md:col-span-4 flex items-center justify-end gap-4">
           <span class="hidden sm:inline text-[11px] opacity-75">CDMX · <span id="cdmx-clock">--:--</span></span>
-          <a href="#contact" class="px-3.5 py-1.5 bg-cobalt text-paper text-[11px] tracking-widest uppercase hover:bg-cobaltMid transition-colors">
-            Initiate ↗
+          <a href="mailto:hello@dacorzo.com" class="px-3.5 py-1.5 bg-cobalt text-paper text-[11px] tracking-widest uppercase hover:bg-cobaltMid transition-colors">
+            Contact ↗
           </a>
         </div>
       </div>
     </header>
 
-    <!-- HERO SECTION (Image 1 ASCII Earth + Image 8 Blueprint Drafting Layout) -->
+    <!-- HERO SECTION -->
     <section class="relative border-b border-cobalt/25 overflow-hidden">
-      <!-- Top Architectural Metadata Strip -->
-      <div class="border-b border-cobalt/15 px-5 md:px-10 py-2.5 flex flex-wrap justify-between items-center gap-2 font-mono text-[11px] text-cobalt/75">
-        <span>SCALE 1:1 — PERSONAL ARCHITECTURE & VENTURE SYSTEMS</span>
-        <span class="border border-cobalt/30 px-2 py-0.5 bg-paper">FIG. 01 — TERRESTRIAL SIMULATION</span>
-        <span>LAT 19.4326° N · LON 99.1332° W</span>
+      <div class="border-b border-cobalt/15 px-5 md:px-10 py-2 flex flex-wrap justify-between items-center gap-2 font-mono text-[11px] text-cobalt/70">
+        <span>SHEET 01 — OVERVIEW</span>
+        <span>19.4326° N, 99.1332° W</span>
       </div>
 
       <div class="px-5 md:px-10 pt-10 pb-6 md:pt-14">
-        <!-- Oversized Architectural Display Title -->
-        <h1 class="font-title text-4xl sm:text-6xl md:text-[76px] leading-[1.03] tracking-tight text-cobalt max-w-5xl">
-          Building <span class="italic font-normal border border-cobalt/40 px-3 py-0.5 bg-paper/80">systems</span> that bridge quantitative rigor, climate tech &amp; real-world ventures.
+        <h1 class="font-title text-4xl sm:text-6xl md:text-[72px] leading-[1.06] tracking-tight text-cobalt max-w-5xl">
+          Data science, corporate finance <span class="italic font-normal">&amp;</span> early-stage ventures.
         </h1>
       </div>
 
-      <!-- Main Hero Split: Left Spec Index + Center/Right Rotating ASCII Earth -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 px-5 md:px-10 pb-12 gap-8 items-end">
+      <div class="grid grid-cols-1 lg:grid-cols-12 px-5 md:px-10 pb-12 gap-8 items-center">
 
-        <!-- Left Blueprint Index Column (inspired by Image 1 left rail & Image 8 callouts) -->
+        <!-- Left Rail -->
         <div class="lg:col-span-4 flex flex-col justify-between space-y-8 z-10">
           <div class="border border-cobalt/25 bg-paper/90 p-5 blueprint-box">
-            <div class="font-mono text-[10px] tracking-widest uppercase opacity-70 mb-3 pb-2 border-b border-cobalt/15 flex justify-between">
-              <span>SPECIFICATION</span>
-              <span>REV. 2026</span>
+            <div class="font-mono text-[10px] tracking-widest uppercase opacity-65 mb-3 pb-2 border-b border-cobalt/15 flex justify-between">
+              <span>FOCUS AREAS</span>
+              <span>2026</span>
             </div>
             <ul class="space-y-2.5 font-mono text-xs">
               <li class="flex items-center justify-between text-cobalt font-medium">
                 <span>/ 01 Quantitative Finance &amp; Data</span>
                 <span>■</span>
               </li>
-              <li class="flex items-center justify-between text-cobalt/65">
-                <span>/ 02 Climate Tech &amp; VC Systems</span>
+              <li class="flex items-center justify-between text-cobalt/70">
+                <span>/ 02 Climate Tech Venture Research</span>
                 <span>□</span>
               </li>
-              <li class="flex items-center justify-between text-cobalt/65">
-                <span>/ 03 Consumer &amp; Product Builds</span>
+              <li class="flex items-center justify-between text-cobalt/70">
+                <span>/ 03 Product &amp; Consumer Operations</span>
                 <span>□</span>
               </li>
             </ul>
@@ -162,12 +142,12 @@
 
           <div class="space-y-5">
             <p class="font-body text-base md:text-[17px] leading-relaxed text-cobalt/90">
-              I’m <strong class="font-semibold">David Corzo</strong>—studying Data Science &amp; Financial Management at ITAM while architecting automated venture intelligence pipelines, recruiting platforms, and consumer operations in Mexico City.
+              I’m David Corzo. I study Data Science and Financial Management at ITAM in Mexico City, build venture intelligence pipelines at Climate Tech Venture Review, and co-founded La Fondita and Scout.
             </p>
 
             <div class="flex flex-wrap items-center gap-3 pt-1">
-              <a href="#ventures" class="px-6 py-3 bg-cobalt text-paper font-mono text-xs tracking-widest uppercase hover:bg-cobaltMid transition-colors">
-                Inspect Blueprints ↓
+              <a href="#work" class="px-6 py-3 bg-cobalt text-paper font-mono text-xs tracking-widest uppercase hover:bg-cobaltMid transition-colors">
+                Selected Work ↓
               </a>
               <a href="https://github.com/dacorzo" target="_blank" class="px-5 py-3 border border-cobalt text-cobalt font-mono text-xs tracking-widest uppercase hover:bg-cobalt/5 transition-colors">
                 GitHub ↗
@@ -176,174 +156,136 @@
           </div>
         </div>
 
-        <!-- Right/Center Interactive Rotating ASCII Earth -->
-        <div class="lg:col-span-8 flex flex-col items-center justify-center relative">
-          <div class="w-full border border-cobalt/25 bg-paper/75 p-4 md:p-6 relative blueprint-box overflow-hidden">
-            <div class="flex items-center justify-between font-mono text-[10px] text-cobalt/70 mb-2">
-              <span>RENDER: ASCII_GLOBE_V2.JS</span>
-              <span id="earth-status" class="cursor-pointer hover:underline" title="Click globe to pause/resume">[ DRAG TO ROTATE · CLICK TO PAUSE ]</span>
+        <!-- Right True-Scale Rotating ASCII Earth -->
+        <div class="lg:col-span-8 flex flex-col items-center justify-center">
+          <div class="w-full border border-cobalt/25 bg-paper/80 p-4 md:p-6 relative blueprint-box">
+            <div class="flex items-center justify-between font-mono text-[10px] text-cobalt/65 mb-2">
+              <span>ORTHOGRAPHIC PROJECTION // 110M ATLAS</span>
+              <span id="earth-toggle" class="cursor-pointer hover:underline">[ DRAG TO ROTATE · CLICK TO PAUSE ]</span>
             </div>
 
-            <!-- Live ASCII Canvas Container -->
-            <div class="flex items-center justify-center overflow-hidden py-2 cursor-grab active:cursor-grabbing" id="earth-wrapper">
-              <pre id="ascii-earth" class="text-[7px] sm:text-[9px] md:text-[10.5px] text-cobalt"></pre>
+            <div class="flex items-center justify-center py-2 cursor-grab active:cursor-grabbing overflow-hidden" id="earth-wrapper">
+              <pre id="ascii-earth" class="text-[8px] sm:text-[9.5px] md:text-[11px] text-cobalt"></pre>
             </div>
 
             <div class="flex items-center justify-between font-mono text-[10px] text-cobalt/65 mt-2 pt-2 border-t border-cobalt/15">
-              <span>AXIAL TILT: 23.44°</span>
-              <span>PROJECTION: ORTHOGRAPHIC ASCII</span>
-              <span id="lon-readout">LON: 000.0°</span>
+              <span>TILT: 23.44°</span>
+              <span id="lon-readout">LON: 099.1° W</span>
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Bottom Ticker / Discipline Strip (like Image 1 bottom bar) -->
-      <div class="border-t border-cobalt/25 bg-paperDark/60 px-5 md:px-10 py-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 font-mono text-xs tracking-wider uppercase text-cobalt/80">
-        <div class="flex items-center gap-2"><span>+</span> PYTHON / SCIPY</div>
-        <div class="flex items-center gap-2"><span>+</span> ORACLE &amp; NEO4J</div>
-        <div class="flex items-center gap-2"><span>+</span> QUANT FINANCE</div>
-        <div class="flex items-center gap-2"><span>+</span> CLIMATE VC</div>
-        <div class="flex items-center gap-2"><span>+</span> TABLEAU PUBLIC</div>
-        <div class="flex items-center gap-2"><span>+</span> VENTURE OPS</div>
+      <!-- Bottom Strip -->
+      <div class="border-t border-cobalt/25 bg-paperDark/50 px-5 md:px-10 py-3.5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 font-mono text-[11px] tracking-wider uppercase text-cobalt/80">
+        <div>+ PYTHON / SCIPY</div>
+        <div>+ ORACLE &amp; NEO4J</div>
+        <div>+ DERIVATIVES</div>
+        <div>+ CLIMATE VC</div>
+        <div>+ TABLEAU</div>
+        <div>+ OPERATIONS</div>
       </div>
     </section>
 
-    <!-- SECTION 01: BUILDER MANIFESTO & ARCHITECTURAL INDEX -->
-    <section id="index" class="px-5 md:px-10 py-20 border-b border-cobalt/25">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        <div class="lg:col-span-4 space-y-4">
-          <div class="inline-block border border-cobalt px-2.5 py-1 font-mono text-[11px] tracking-widest uppercase">
-            SEC. 01 // THESIS
-          </div>
-          <h2 class="font-title text-3xl md:text-4xl leading-tight">
-            First-principles engineering applied to capital &amp; operations.
-          </h2>
-          <p class="font-mono text-xs text-cobalt/70 pt-2">
-            ITAM — B.S. Data Science &amp; B.A. Financial Management (Class of 2028)
-          </p>
-        </div>
-
-        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="border border-cobalt/25 bg-paper p-6 blueprint-box">
-            <span class="font-mono text-[11px] text-cobalt/60 block mb-3">[ 01.A — ANALYTICAL RIGOR ]</span>
-            <h3 class="font-title text-2xl mb-2">Mathematical &amp; Data Architecture</h3>
-            <p class="font-body text-[15px] leading-relaxed text-cobalt/85">
-              From stochastic derivatives pricing and portfolio optimization to graph databases and automated data ingestion pipelines—every system is built from underlying mathematical derivations rather than black-box shortcuts.
-            </p>
-          </div>
-
-          <div class="border border-cobalt/25 bg-paper p-6 blueprint-box">
-            <span class="font-mono text-[11px] text-cobalt/60 block mb-3">[ 01.B — EXECUTION ]</span>
-            <h3 class="font-title text-2xl mb-2">Zero-to-One Venture Building</h3>
-            <p class="font-body text-[15px] leading-relaxed text-cobalt/85">
-              Translating models into operating businesses—whether structuring an early-stage climate tech accelerator, building student-employer matching software, or scaling recurring consumer logistics.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 02: INVERTED "NEGATIVE" CYANOTYPE SECTION (Image 3 Vibe) -->
-    <section id="ventures" class="blueprint-negative text-paper px-5 md:px-10 py-24 border-b border-paper/20 relative">
-      <div class="flex flex-col md:flex-row md:items-end justify-between pb-12 mb-12 border-b border-paper/20 gap-6">
+    <!-- SECTION 01: INVERTED NEGATIVE SECTION (Selected Work) -->
+    <section id="work" class="blueprint-negative text-paper px-5 md:px-10 py-24 border-b border-paper/20">
+      <div class="flex flex-col md:flex-row md:items-end justify-between pb-10 mb-12 border-b border-paper/20 gap-6">
         <div>
-          <div class="inline-block border border-paper/50 px-2.5 py-1 font-mono text-[11px] tracking-widest uppercase mb-4">
-            SEC. 02 // NEGATIVE PRINT — SELECTED BUILDS
+          <div class="font-mono text-[11px] tracking-widest uppercase text-paper/70 mb-3">
+            / 01 — SELECTED WORK
           </div>
-          <h2 class="font-title text-4xl md:text-6xl leading-none">
-            Ventures, Research <span class="italic">&amp;</span> Systems
+          <h2 class="font-title text-4xl md:text-5xl leading-tight">
+            Ventures <span class="italic">&amp;</span> Projects
           </h2>
         </div>
         <p class="font-body text-paper/80 max-w-sm text-sm md:text-base">
-          Schematics and active deployments across software, venture analytics, and consumer operations.
+          Software builds, venture capital datasets, and operating businesses.
         </p>
       </div>
 
-      <!-- Architectural Project Grid on Cobalt Negative -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
-        <!-- Project 01: Scout -->
-        <article class="md:col-span-7 border border-paper/30 bg-cobaltMid/40 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
+        <!-- Scout -->
+        <article class="md:col-span-7 border border-paper/30 bg-cobaltMid/35 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
           <div>
-            <div class="flex items-center justify-between font-mono text-[11px] text-paper/75 pb-4 mb-6 border-b border-paper/15">
-              <span>DWG-01 // RECRUITING INFRASTRUCTURE</span>
-              <span>STATUS: ACTIVE BUILD</span>
+            <div class="flex items-center justify-between font-mono text-[11px] text-paper/70 pb-4 mb-6 border-b border-paper/15">
+              <span>01 // PLATFORM</span>
+              <span>2026</span>
             </div>
             <h3 class="font-title text-3xl md:text-4xl mb-3">Scout</h3>
             <p class="font-body text-paper/85 text-base leading-relaxed max-w-xl">
-              A student-to-employer recruiting and candidate-ranking platform engineered to surface high-signal analytical and quantitative talent for modern teams.
+              A student-to-employer recruiting and candidate-ranking platform built to connect analytical university talent with startups and investment teams.
             </p>
           </div>
 
           <div class="mt-10 pt-5 border-t border-paper/15 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
-            <span class="text-paper/75">RANKING MODELS · FULL-STACK · UX ARCHITECTURE</span>
+            <span class="text-paper/70">RANKING ALGORITHMS · WEB APP</span>
             <a href="https://github.com/dacorzo" target="_blank" class="px-3.5 py-1.5 border border-paper text-paper hover:bg-paper hover:text-cobalt transition-colors">
-              INSPECT SPEC →
+              REPOSITORY →
             </a>
           </div>
         </article>
 
-        <!-- Project 02: Climate Tech Venture Review -->
-        <article class="md:col-span-5 border border-paper/30 bg-cobaltMid/25 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
+        <!-- Climate Tech Venture Review -->
+        <article class="md:col-span-5 border border-paper/30 bg-cobaltMid/20 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
           <div>
-            <div class="flex items-center justify-between font-mono text-[11px] text-paper/75 pb-4 mb-6 border-b border-paper/15">
-              <span>DWG-02 // VENTURE INTELLIGENCE</span>
-              <span>CLIMATE TECH</span>
+            <div class="flex items-center justify-between font-mono text-[11px] text-paper/70 pb-4 mb-6 border-b border-paper/15">
+              <span>02 // VENTURE ANALYTICS</span>
+              <span>ONGOING</span>
             </div>
             <h3 class="font-title text-3xl mb-3">Climate Tech Venture Review</h3>
             <p class="font-body text-paper/85 text-[15px] leading-relaxed">
-              Automated competitive intelligence pipelines, VC capital-flow analytics in Python &amp; Tableau, and structuring a dedicated climate tech accelerator program.
+              Building automated competitive intelligence pipelines, analyzing venture capital deal flow in Python and Tableau, and structuring an early-stage climate tech accelerator.
             </p>
           </div>
 
           <div class="mt-10 pt-5 border-t border-paper/15 flex items-center justify-between font-mono text-xs">
-            <span class="text-paper/75">PYTHON · SQL · TABLEAU</span>
+            <span class="text-paper/70">PYTHON · GOOGLE SHEETS · TABLEAU</span>
             <a href="https://github.com/dacorzo" target="_blank" class="underline underline-offset-4 hover:text-paper/80">
-              DATA PIPELINES ↗
+              DETAILS ↗
             </a>
           </div>
         </article>
 
-        <!-- Project 03: La Fondita -->
-        <article class="md:col-span-5 border border-paper/30 bg-cobaltMid/25 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
+        <!-- La Fondita -->
+        <article class="md:col-span-5 border border-paper/30 bg-cobaltMid/20 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
           <div>
-            <div class="flex items-center justify-between font-mono text-[11px] text-paper/75 pb-4 mb-6 border-b border-paper/15">
-              <span>DWG-03 // CONSUMER LOGISTICS</span>
+            <div class="flex items-center justify-between font-mono text-[11px] text-paper/70 pb-4 mb-6 border-b border-paper/15">
+              <span>03 // CONSUMER VENTURE</span>
               <span>CO-FOUNDER</span>
             </div>
             <h3 class="font-title text-3xl mb-3">La Fondita</h3>
             <p class="font-body text-paper/85 text-[15px] leading-relaxed">
-              Prepared meal-prep delivery venture operating across Mexico City—optimizing unit economics, batch production cycles, and subscription checkout flows.
+              A prepared meal-prep delivery business serving university students and office workers in Mexico City—managing batch production, subscription logistics, and unit economics.
             </p>
           </div>
 
           <div class="mt-10 pt-5 border-t border-paper/15 flex items-center justify-between font-mono text-xs">
-            <span class="text-paper/75">UNIT ECONOMICS · OPS</span>
+            <span class="text-paper/70">LOGISTICS · PRICING · E-COMMERCE</span>
             <a href="https://lafonditamx.com" target="_blank" class="underline underline-offset-4 hover:text-paper/80">
               LAFONDITAMX.COM ↗
             </a>
           </div>
         </article>
 
-        <!-- Project 04: Quantitative Finance & Graph Systems -->
-        <article class="md:col-span-7 border border-paper/30 bg-cobaltMid/40 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
+        <!-- Quantitative & Database Work -->
+        <article class="md:col-span-7 border border-paper/30 bg-cobaltMid/35 p-8 flex flex-col justify-between blueprint-box hover:border-paper transition-colors">
           <div>
-            <div class="flex items-center justify-between font-mono text-[11px] text-paper/75 pb-4 mb-6 border-b border-paper/15">
-              <span>DWG-04 // QUANTITATIVE &amp; DATA LABS</span>
-              <span>OPEN SOURCE</span>
+            <div class="flex items-center justify-between font-mono text-[11px] text-paper/70 pb-4 mb-6 border-b border-paper/15">
+              <span>04 // QUANTITATIVE &amp; DATA</span>
+              <span>ITAM</span>
             </div>
-            <h3 class="font-title text-3xl mb-3">Financial Modeling &amp; Database Engineering</h3>
+            <h3 class="font-title text-3xl mb-3">Financial Models &amp; Database Systems</h3>
             <p class="font-body text-paper/85 text-base leading-relaxed max-w-xl">
-              Research repositories spanning options payoff modeling, corporate valuation, relational Oracle schemas, and distributed NoSQL/Graph architectures (Neo4j, MongoDB, Cassandra).
+              Coursework and open-source implementations covering options pricing, corporate valuation, relational Oracle databases, and NoSQL/graph engines (Neo4j, MongoDB, Cassandra).
             </p>
           </div>
 
           <div class="mt-10 pt-5 border-t border-paper/15 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
-            <span class="text-paper/75">NUMPY · PANDAS · SYMPY · NEO4J</span>
+            <span class="text-paper/70">NUMPY · PANDAS · SYMPY · ORACLE SQL</span>
             <a href="https://github.com/dacorzo" target="_blank" class="px-3.5 py-1.5 border border-paper text-paper hover:bg-paper hover:text-cobalt transition-colors">
-              GITHUB REPOS →
+              CODEBASE →
             </a>
           </div>
         </article>
@@ -351,100 +293,105 @@
       </div>
     </section>
 
-    <!-- SECTION 03: TECHNICAL SCHEMATICS / STACK TABLE -->
-    <section id="architecture" class="px-5 md:px-10 py-20 border-b border-cobalt/25">
-      <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <div class="inline-block border border-cobalt px-2.5 py-1 font-mono text-[11px] tracking-widest uppercase mb-3">
-            SEC. 03 // BILL OF MATERIALS
+    <!-- SECTION 02: BACKGROUND & APPROACH -->
+    <section id="about" class="px-5 md:px-10 py-20 border-b border-cobalt/25">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-4 space-y-4">
+          <div class="font-mono text-[11px] tracking-widest uppercase text-cobalt/70">
+            / 02 — BACKGROUND
           </div>
-          <h2 class="font-title text-3xl md:text-5xl">Technical &amp; Financial Stack</h2>
-        </div>
-        <span class="font-mono text-xs text-cobalt/70">SYSTEM CAPABILITIES MATRIX</span>
-      </div>
-
-      <div class="border border-cobalt/30 divide-y divide-cobalt/20 bg-paper/85">
-        <div class="grid grid-cols-1 md:grid-cols-12 p-5 md:p-6 gap-4 items-center">
-          <div class="md:col-span-3 font-mono text-xs uppercase tracking-wider font-medium">01 / Quantitative &amp; Code</div>
-          <div class="md:col-span-6 font-body text-base">Python (NumPy, Pandas, SciPy, SymPy, Matplotlib), R, Google Apps Script, Git, Docker</div>
-          <div class="md:col-span-3 md:text-right font-mono text-xs text-cobalt/65">[ MODELING &amp; AUTOMATION ]</div>
+          <h2 class="font-title text-3xl md:text-4xl leading-tight">
+            Quantitative training meets hands-on execution.
+          </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 p-5 md:p-6 gap-4 items-center">
-          <div class="md:col-span-3 font-mono text-xs uppercase tracking-wider font-medium">02 / Data Architecture</div>
-          <div class="md:col-span-6 font-body text-base">Oracle SQL, Neo4j (Graph Databases), MongoDB, Apache Cassandra, Firebase</div>
-          <div class="md:col-span-3 md:text-right font-mono text-xs text-cobalt/65">[ RELATIONAL &amp; NOSQL ]</div>
-        </div>
+        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="border border-cobalt/25 bg-paper p-6 blueprint-box">
+            <span class="font-mono text-[11px] text-cobalt/60 block mb-3">ACADEMICS</span>
+            <h3 class="font-title text-2xl mb-2">ITAM (2024 – 2028)</h3>
+            <p class="font-body text-[15px] leading-relaxed text-cobalt/85">
+              Pursuing a double degree in Data Science (Ciencia de Datos) and Financial Management (Dirección Financiera), alongside organizing the Mexican Economics &amp; Finance Olympiad.
+            </p>
+          </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 p-5 md:p-6 gap-4 items-center">
-          <div class="md:col-span-3 font-mono text-xs uppercase tracking-wider font-medium">03 / Finance &amp; Capital</div>
-          <div class="md:col-span-6 font-body text-base">Corporate Valuation, Derivatives &amp; Options Structuring, VC Deal Analytics, Unit Economics</div>
-          <div class="md:col-span-3 md:text-right font-mono text-xs text-cobalt/65">[ CAPITAL ALLOCATION ]</div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-12 p-5 md:p-6 gap-4 items-center">
-          <div class="md:col-span-3 font-mono text-xs uppercase tracking-wider font-medium">04 / BI &amp; Product</div>
-          <div class="md:col-span-6 font-body text-base">Tableau Public, Interactive Front-End Prototyping, Automated Reporting Pipelines</div>
-          <div class="md:col-span-3 md:text-right font-mono text-xs text-cobalt/65">[ VISUALIZATION ]</div>
+          <div class="border border-cobalt/25 bg-paper p-6 blueprint-box">
+            <span class="font-mono text-[11px] text-cobalt/60 block mb-3">VENTURE EXPERIENCE</span>
+            <h3 class="font-title text-2xl mb-2">Climate Tech &amp; Startups</h3>
+            <p class="font-body text-[15px] leading-relaxed text-cobalt/85">
+              Previously interned as a junior venture capital analyst, co-founded a microalgae carbon sequestration startup, and organized climate tech founder conferences in Mexico City.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 04: FOOTER (Inspired by Image 3 & Image 6 Editorial Columns) -->
+    <!-- SECTION 03: TECHNICAL STACK -->
+    <section id="tools" class="px-5 md:px-10 py-20 border-b border-cobalt/25">
+      <div class="mb-10">
+        <div class="font-mono text-[11px] tracking-widest uppercase text-cobalt/70 mb-2">
+          / 03 — TOOLKIT
+        </div>
+        <h2 class="font-title text-3xl md:text-4xl">Technical &amp; Financial Stack</h2>
+      </div>
+
+      <div class="border border-cobalt/30 divide-y divide-cobalt/20 bg-paper/85">
+        <div class="grid grid-cols-1 md:grid-cols-12 p-5 md:p-6 gap-4 items-center">
+          <div class="md:col-span-3 font-mono text-xs uppercase tracking-wider font-medium">Languages &amp; Libraries</div>
+          <div class="md:col-span-9 font-body text-base">Python (NumPy, Pandas, SciPy, SymPy, Matplotlib), R, SQL, Google Apps Script, HTML/JS</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 p-5 md:p-6 gap-4 items-center">
+          <div class="md:col-span-3 font-mono text-xs uppercase tracking-wider font-medium">Databases &amp; Infra</div>
+          <div class="md:col-span-9 font-body text-base">Oracle DB, Neo4j, MongoDB, Apache Cassandra, Docker, Git</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 p-5 md:p-6 gap-4 items-center">
+          <div class="md:col-span-3 font-mono text-xs uppercase tracking-wider font-medium">Finance &amp; Analytics</div>
+          <div class="md:col-span-9 font-body text-base">Corporate Finance, Options &amp; Derivatives Modeling, Venture Capital Deal Flow, Tableau Public</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer id="contact" class="px-5 md:px-10 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-14 border-b border-cobalt/20">
-        <div class="md:col-span-5 space-y-4">
-          <div class="flex items-center gap-2.5">
-            <span class="w-3 h-3 bg-cobalt inline-block"></span>
-            <span class="font-title text-2xl">David Corzo</span>
-          </div>
-          <p class="font-body italic text-base text-cobalt/85 max-w-sm leading-relaxed">
-            Designing analytical systems, climate tech infrastructure, and enduring ventures from Mexico City.
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-cobalt/20">
+        <div class="md:col-span-6 space-y-3">
+          <div class="font-title text-2xl">David Corzo</div>
+          <p class="font-body text-base text-cobalt/85 max-w-md">
+            Based in Mexico City. Reach out regarding climate tech, venture research, or software builds.
           </p>
-          <div class="pt-2 font-mono text-xs space-y-1.5">
-            <div><span class="opacity-60">MAIL:</span> <a href="mailto:hello@dacorzo.com" class="underline underline-offset-4">hello@dacorzo.com</a></div>
-            <div><span class="opacity-60">LOC:</span> Mexico City, MX</div>
+          <div class="pt-2 font-mono text-xs">
+            <a href="mailto:hello@dacorzo.com" class="underline underline-offset-4">hello@dacorzo.com</a>
           </div>
         </div>
 
-        <div class="md:col-span-2 space-y-2.5 font-mono text-xs">
-          <div class="uppercase tracking-widest opacity-60 pb-1 border-b border-cobalt/15">Directory</div>
-          <ul class="space-y-2 pt-1">
-            <li><a href="#index" class="hover:underline">Thesis</a></li>
-            <li><a href="#ventures" class="hover:underline">Ventures</a></li>
-            <li><a href="#architecture" class="hover:underline">Stack</a></li>
+        <div class="md:col-span-3 space-y-2 font-mono text-xs">
+          <div class="uppercase tracking-widest opacity-60 pb-1">Sections</div>
+          <ul class="space-y-2">
+            <li><a href="#work" class="hover:underline">Work</a></li>
+            <li><a href="#about" class="hover:underline">Background</a></li>
+            <li><a href="#tools" class="hover:underline">Stack</a></li>
           </ul>
         </div>
 
-        <div class="md:col-span-2 space-y-2.5 font-mono text-xs">
-          <div class="uppercase tracking-widest opacity-60 pb-1 border-b border-cobalt/15">Networks</div>
-          <ul class="space-y-2 pt-1">
+        <div class="md:col-span-3 space-y-2 font-mono text-xs">
+          <div class="uppercase tracking-widest opacity-60 pb-1">Links</div>
+          <ul class="space-y-2">
             <li><a href="https://github.com/dacorzo" target="_blank" class="hover:underline">GitHub ↗</a></li>
             <li><a href="https://linkedin.com" target="_blank" class="hover:underline">LinkedIn ↗</a></li>
             <li><a href="https://lafonditamx.com" target="_blank" class="hover:underline">La Fondita ↗</a></li>
           </ul>
         </div>
-
-        <div class="md:col-span-3 space-y-3">
-          <div class="font-mono text-xs uppercase tracking-widest opacity-60 pb-1 border-b border-cobalt/15">Direct Dispatch</div>
-          <p class="font-body text-sm text-cobalt/80">
-            Working on something ambitious in climate tech, finance, or data? Let’s talk.
-          </p>
-          <a href="mailto:hello@dacorzo.com" class="inline-block w-full text-center py-2.5 bg-cobalt text-paper font-mono text-xs uppercase tracking-widest hover:bg-cobaltMid transition-colors">
-            Send Transmission →
-          </a>
-        </div>
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-[11px] text-cobalt/70">
-        <span>© 2026 DAVID CORZO — ALL SCHEMATICS RESERVED</span>
-        <span>BUILT WITH PURE HTML, TAILWIND &amp; JS</span>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 font-mono text-[11px] text-cobalt/65">
+        <span>© 2026 David Corzo</span>
+        <span>Mexico City, MX</span>
       </div>
     </footer>
 
   </div>
 
-  <!-- Rotating 3D ASCII Earth + Live CDMX Clock Script -->
   <script>
     // Live Mexico City Time
     function updateClock() {
@@ -455,50 +402,82 @@
     setInterval(updateClock, 1000);
     updateClock();
 
-    // 3D Rotating ASCII Earth Engine
-    (function () {
+    // True-Aspect-Ratio Rotating ASCII Earth with Real World Coastlines
+    (async function () {
       const pre = document.getElementById('ascii-earth');
       const lonReadout = document.getElementById('lon-readout');
       const wrapper = document.getElementById('earth-wrapper');
 
-      // Procedural continental landmass map (realistic silhouettes for Americas, Eurasia, Africa, Australia)
-      const continents = [
-        // North America
-        { lat: 48, lon: -105, r: 22 }, { lat: 38, lon: -98, r: 18 }, { lat: 58, lon: -115, r: 16 },
-        { lat: 23, lon: -102, r: 11 }, { lat: 64, lon: -150, r: 12 }, { lat: 72, lon: -42, r: 11 },
-        // South America
-        { lat: -6, lon: -60, r: 18 }, { lat: -18, lon: -56, r: 16 }, { lat: -34, lon: -64, r: 11 },
-        { lat: -46, lon: -69, r: 7 },
-        // Europe
-        { lat: 48, lon: 12, r: 14 }, { lat: 56, lon: 34, r: 18 }, { lat: 62, lon: 16, r: 10 },
-        // Africa
-        { lat: 22, lon: 14, r: 21 }, { lat: 6, lon: 22, r: 18 }, { lat: -14, lon: 24, r: 15 },
-        { lat: -28, lon: 24, r: 10 },
-        // Asia
-        { lat: 60, lon: 75, r: 25 }, { lat: 62, lon: 115, r: 24 }, { lat: 42, lon: 95, r: 24 },
-        { lat: 32, lon: 112, r: 18 }, { lat: 22, lon: 78, r: 13 }, { lat: 14, lon: 102, r: 10 },
-        { lat: 36, lon: 138, r: 6 },
-        // Australia & Antarctica
-        { lat: -25, lon: 134, r: 14 }, { lat: -80, lon: 0, r: 28 }, { lat: -80, lon: 120, r: 28 }, { lat: -80, lon: -120, r: 28 }
-      ];
+      // Offscreen equirectangular canvas (360x180) rasterized from real TopoJSON world map
+      const mapW = 360;
+      const mapH = 180;
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = mapW;
+      offCanvas.height = mapH;
+      const ctx = offCanvas.getContext('2d');
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, mapW, mapH);
 
-      function isLand(latDeg, lonDeg) {
-        // Normalize lon to [-180, 180]
-        let lon = ((lonDeg + 540) % 360) - 180;
-        // Organic coastline perturbation using trig harmonics
-        const warpLat = latDeg + 4.5 * Math.sin(lon * 0.14) + 2.5 * Math.cos(latDeg * 0.22);
-        const warpLon = lon + 5.5 * Math.cos(latDeg * 0.13) + 3.0 * Math.sin(lon * 0.19);
+      let landGrid = new Uint8Array(mapW * mapH);
 
-        for (let i = 0; i < continents.length; i++) {
-          const c = continents[i];
-          const dLat = warpLat - c.lat;
-          const dLon = (warpLon - c.lon) * Math.cos((c.lat * Math.PI) / 180);
-          if (dLat * dLat + dLon * dLon < c.r * c.r) return true;
+      try {
+        const res = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json');
+        const topology = await res.json();
+        const landGeo = topojson.feature(topology, topology.objects.land);
+
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        const drawRing = (ring) => {
+          ring.forEach(([lon, lat], i) => {
+            const x = ((lon + 180) / 360) * mapW;
+            const y = ((90 - lat) / 180) * mapH;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          });
+          ctx.closePath();
+        };
+
+        const processGeom = (geom) => {
+          if (geom.type === 'Polygon') {
+            geom.coordinates.forEach(drawRing);
+          } else if (geom.type === 'MultiPolygon') {
+            geom.coordinates.forEach(poly => poly.forEach(drawRing));
+          } else if (geom.type === 'FeatureCollection') {
+            geom.features.forEach(f => processGeom(f.geometry));
+          } else if (geom.type === 'Feature') {
+            processGeom(geom.geometry);
+          }
+        };
+
+        processGeom(landGeo);
+        ctx.fill();
+
+        const imgData = ctx.getImageData(0, 0, mapW, mapH).data;
+        for (let i = 0; i < mapW * mapH; i++) {
+          landGrid[i] = imgData[i * 4] > 128 ? 1 : 0;
         }
-        return false;
+      } catch (err) {
+        console.warn('Map atlas fallback:', err);
       }
 
-      let rotation = -1.65; // Start facing the Americas
+      // Measure exact monospace character width-to-height ratio in the DOM
+      function getCharAspect() {
+        const span = document.createElement('span');
+        span.style.fontFamily = '"JetBrains Mono", monospace';
+        span.style.fontSize = '16px';
+        span.style.lineHeight = '1.0';
+        span.style.position = 'absolute';
+        span.style.visibility = 'hidden';
+        span.textContent = 'MMMMMMMMMM';
+        document.body.appendChild(span);
+        const rect = span.getBoundingClientRect();
+        document.body.removeChild(span);
+        return (rect.width / 10) / rect.height; // typically ~0.60
+      }
+
+      const charAspect = getCharAspect();
+
+      let rotation = -1.73; // Centered near Mexico / Americas at startup
       let paused = false;
       let isDragging = false;
       let lastX = 0;
@@ -515,8 +494,7 @@
       });
       window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        const dx = e.clientX - lastX;
-        rotation += dx * 0.012;
+        rotation += (e.clientX - lastX) * 0.012;
         lastX = e.clientX;
       });
 
@@ -525,56 +503,56 @@
       const sinTilt = Math.sin(tilt);
 
       function renderFrame() {
-        const width = window.innerWidth < 640 ? 64 : 88;
-        const height = Math.round(width * 0.48);
-        const R = 1.0;
+        // Choose row count and compute exact column count using charAspect so sphere is a true circle
+        const rows = window.innerWidth < 640 ? 28 : 36;
+        const cols = Math.round(rows / charAspect);
 
-        // Directional light from upper-left front
-        const lx = -0.55, ly = 0.45, lz = 0.7;
+        const lx = -0.55, ly = 0.42, lz = 0.72;
         const lLen = Math.hypot(lx, ly, lz);
         const light = [lx / lLen, ly / lLen, lz / lLen];
 
         const landChars = ['.', ':', '+', 'm', 'w', 'M', '#'];
-        const oceanChars = [' ', '·', '·', '.', ':'];
+        const oceanChars = [' ', '·', '·', '.'];
         let output = '';
 
-        for (let row = 0; row < height; row++) {
-          const y = 1 - (2 * (row + 0.5)) / height;
-          for (let col = 0; col < width; col++) {
-            const x = (2 * (col + 0.5)) / width - 1;
+        for (let r = 0; r < rows; r++) {
+          const y = 1 - (2 * (r + 0.5)) / rows;
+          for (let c = 0; c < cols; c++) {
+            const x = (2 * (c + 0.5)) / cols - 1;
             const r2 = x * x + y * y;
 
-            if (r2 > R * R) {
+            if (r2 > 1.0) {
               output += ' ';
               continue;
             }
 
-            const z = Math.sqrt(R * R - r2);
+            const z = Math.sqrt(1.0 - r2);
 
-            // Apply axial tilt
+            // Axial tilt rotation
             const yt = y * cosTilt - z * sinTilt;
             const zt = y * sinTilt + z * cosTilt;
             const xt = x;
 
-            // Convert 3D point on sphere to lat/lon
             const lat = Math.asin(Math.max(-1, Math.min(1, yt))) * (180 / Math.PI);
-            const lon = (Math.atan2(xt, zt) + rotation) * (180 / Math.PI);
+            let lon = ((Math.atan2(xt, zt) - rotation) * (180 / Math.PI)) % 360;
+            if (lon < -180) lon += 360;
+            if (lon > 180) lon -= 360;
 
-            // Lighting dot product
+            const u = Math.min(mapW - 1, Math.max(0, Math.floor(((lon + 180) / 360) * mapW)));
+            const v = Math.min(mapH - 1, Math.max(0, Math.floor(((90 - lat) / 180) * mapH)));
+
             const lum = Math.max(0, x * light[0] + y * light[1] + z * light[2]);
-            const rim = 1 - z; // Limb darkening / edge highlight
 
-            if (isLand(lat, lon)) {
-              const idx = Math.min(landChars.length - 1, Math.floor((lum * 0.75 + 0.25) * landChars.length));
+            if (landGrid[v * mapW + u] === 1) {
+              const idx = Math.min(landChars.length - 1, Math.floor((lum * 0.72 + 0.28) * landChars.length));
               output += landChars[idx];
             } else {
-              // Subtle graticule lines (latitude/longitude grid) in ocean
-              const normLon = ((lon % 360) + 360) % 360;
-              const isGrid = Math.abs(lat % 30) < 1.3 || Math.abs(normLon % 30) < 1.6;
+              const normLon = (lon + 360) % 360;
+              const isGrid = Math.abs(lat % 30) < 1.5 || Math.abs(normLon % 30) < 1.8;
               if (isGrid && lum > 0.15) {
                 output += '+';
               } else {
-                const idx = Math.min(oceanChars.length - 1, Math.floor((lum * 0.7 + rim * 0.2) * oceanChars.length));
+                const idx = Math.min(oceanChars.length - 1, Math.floor(lum * oceanChars.length));
                 output += oceanChars[idx];
               }
             }
@@ -585,10 +563,13 @@
         pre.textContent = output;
 
         if (!paused && !isDragging) {
-          rotation += 0.014;
+          rotation -= 0.012;
         }
-        const deg = (((rotation * 180) / Math.PI) % 360 + 360) % 360;
-        lonReadout.textContent = `LON: ${deg.toFixed(1).padStart(5, '0')}°`;
+        let deg = ((-rotation * 180) / Math.PI) % 360;
+        if (deg < -180) deg += 360;
+        if (deg > 180) deg -= 360;
+        const hemi = deg >= 0 ? 'E' : 'W';
+        lonReadout.textContent = `LON: ${Math.abs(deg).toFixed(1).padStart(5, '0')}° ${hemi}`;
 
         requestAnimationFrame(renderFrame);
       }
