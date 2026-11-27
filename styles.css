@@ -4,6 +4,17 @@
   --pin-gold: #e5a93c;
   --sky-glass: rgba(255, 255, 255, 0.72);
   --sky-border: rgba(255, 255, 255, 0.9);
+
+  /* Blueprint Palette matched to pin-blueprint.jpg */
+  --bp-blue-base: #1b4b82;
+  --bp-blue-deep: #133863;
+  --bp-cyan: #7dd3fc;
+  --bp-line: rgba(255, 255, 255, 0.16);
+  --bp-line-strong: rgba(255, 255, 255, 0.45);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -18,6 +29,7 @@ body {
   background-color: #f7f5f0;
 }
 
+/* ================= HERO SECTION ================= */
 .hero {
   position: relative;
   width: 100%;
@@ -27,7 +39,6 @@ body {
   overflow: hidden;
 }
 
-/* Anchors the city on the left and adds a subtle slow-drift motion */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -51,7 +62,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr; /* Keeps left side open for the city */
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
 }
 
@@ -60,7 +71,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--sky-border);
-  border-radius: 28px 6px 28px 6px; /* Asymmetric Tomorrowland curve */
+  border-radius: 28px 6px 28px 6px;
   padding: 2.75rem;
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
 }
@@ -137,10 +148,303 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Mobile responsiveness */
+/* ================= SECTION 02: BLUEPRINT ABOUT ================= */
+.blueprint-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bp-blue-base);
+  /* Dual-layer CAD blueprint grid */
+  background-image:
+    linear-gradient(to right, var(--bp-line-strong) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bp-line-strong) 1px, transparent 1px),
+    linear-gradient(to right, var(--bp-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--bp-line) 1px, transparent 1px),
+    radial-gradient(circle at 25% 50%, #245d9e 0%, var(--bp-blue-deep) 100%);
+  background-size: 160px 160px, 160px 160px, 32px 32px, 32px 32px, 100% 100%;
+  color: #ffffff;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bp-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  border: 1.5px solid var(--bp-line-strong);
+  padding: 3rem 3.5rem;
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Corner registration crosshairs */
+.bp-crosshair {
+  position: absolute;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1;
+  user-select: none;
+}
+.bp-crosshair.top-left { top: -11px; left: -7px; }
+.bp-crosshair.top-right { top: -11px; right: -7px; }
+.bp-crosshair.bottom-left { bottom: -11px; left: -7px; }
+.bp-crosshair.bottom-right { bottom: -11px; right: -7px; }
+
+/* Pin protruding ~4/5 (80%) into the canvas from the left edge */
+.bp-pin-wrapper {
+  position: absolute;
+  left: -135px; /* Crops roughly 1/5 off the left edge so 4/5 protrudes */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 640px;
+  height: 640px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bp-pin-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  /* Makes the black outer corners invisible on the blue background */
+  mix-blend-mode: lighten;
+  filter: contrast(1.08);
+  opacity: 0.92;
+}
+
+/* Main right-hand editorial content offset past the pin */
+.bp-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-left: 480px; /* Clears the 4/5 protruding pin cleanly */
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.bp-header-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.bp-gold-square {
+  width: 12px;
+  height: 12px;
+  background-color: var(--pin-gold);
+  display: inline-block;
+}
+
+.bp-title-block h2 {
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.bp-kicker {
+  font-size: clamp(1.1rem, 2vw, 1.75rem);
+  color: var(--bp-cyan);
+  letter-spacing: 0.06em;
+  font-weight: 400;
+}
+
+.bp-coords {
+  display: block;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.5rem;
+}
+
+.bp-columns {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.bp-manifesto {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.manifesto-lead,
+.manifesto-closing {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.bp-coords-muted {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.5rem;
+}
+
+.bp-protocols {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-left: 1px dashed var(--bp-line-strong);
+  padding-left: 2rem;
+}
+
+.protocols-heading h3 {
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+.protocols-heading span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--bp-cyan);
+  letter-spacing: 0.08em;
+}
+
+.protocol-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.protocol-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--pin-gold);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.protocol-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--bp-line-strong);
+}
+
+.protocol-item p {
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Bottom-right CAD Specification Block */
+.bp-spec-stamp {
+  align-self: flex-end;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: rgba(19, 56, 99, 0.65);
+  width: 320px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stamp-header {
+  font-size: 0.68rem;
+  padding: 0.35rem 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.06em;
+}
+
+.stamp-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.45rem 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.04em;
+}
+
+.stamp-meta {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.9fr;
+}
+
+.stamp-meta div {
+  padding: 0.35rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.stamp-meta div:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.stamp-meta span {
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.stamp-meta strong {
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+@media (max-width: 1150px) {
+  .bp-pin-wrapper {
+    width: 480px;
+    height: 480px;
+    left: -120px;
+  }
+  .bp-container {
+    padding-left: 340px;
+  }
+  .bp-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    padding-top: 14rem; /* Leaves the top skyline visible on phones */
+    padding-top: 14rem;
+  }
+  .bp-frame {
+    padding: 2rem 1.5rem;
+    flex-direction: column;
+  }
+  .bp-pin-wrapper {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 1.5rem auto;
+  }
+  .bp-container {
+    padding-left: 0;
+  }
+  .bp-protocols {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px dashed var(--bp-line-strong);
+    padding-top: 1.5rem;
+  }
+  .bp-spec-stamp {
+    width: 100%;
   }
 }
