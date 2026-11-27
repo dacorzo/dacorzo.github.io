@@ -41,14 +41,19 @@ body {
 .floating-nav {
   position: fixed;
   top: 1.35rem;
+  left: 2rem;
   right: 2rem;
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: space-between;
+  pointer-events: none;
 }
 
 .liquid-pill {
+  position: relative;
+  pointer-events: auto;
+  pointer-events: auto;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -598,12 +603,20 @@ h1 {
 }
 
 @media (max-width: 900px) {
-  .liquid-pill {
+  .floating-nav {
     top: 1rem;
-    padding: 0.65rem 1.35rem;
+    left: 1.25rem;
+    right: 1.25rem;
+  }
+  .liquid-pill {
+    height: 40px;
+    padding: 0.6rem 1.15rem;
   }
   .liquid-pill-logo {
     height: 14px;
+  }
+  .liquid-pill-cta {
+    font-size: 0.8rem;
   }
   .hero-grid {
     grid-template-columns: 1fr;
@@ -637,10 +650,18 @@ h1 {
 }
 
 @media (max-width: 600px) {
+  .floating-nav {
+    left: 1rem;
+    right: 1rem;
+  }
   .liquid-pill {
-    padding: 0.55rem 1.1rem;
+    height: 36px;
+    padding: 0.5rem 0.95rem;
   }
   .liquid-pill-logo {
     height: 11px;
+  }
+  .liquid-pill-cta {
+    font-size: 0.75rem;
   }
 }
