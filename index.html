@@ -27,10 +27,16 @@
     </defs>
   </svg>
 
-  <!-- FLOATING LIQUID GLASS PILL -->
-  <a href="#top" class="liquid-pill" aria-label="David Corzo — Back to top">
-    <img src="./assets/david-corzo-logo.png" alt="David Corzo" class="liquid-pill-logo" />
-  </a>
+<!-- FLOATING LIQUID GLASS PILLS (TOP RIGHT) -->
+  <nav class="floating-nav" aria-label="Primary navigation">
+    <a href="#top" class="liquid-pill" aria-label="David Corzo — Back to top">
+      <img src="./assets/david-corzo-logo.png" alt="David Corzo" class="liquid-pill-logo" />
+    </a>
+
+    <a href="mailto:hello@dacorzo.com" class="liquid-pill liquid-pill-cta">
+      <span>Let&rsquo;s get in touch</span>
+    </a>
+  </nav>
 
   <!-- SECTION 01: HERO -->
   <header id="top" class="hero">
@@ -162,14 +168,14 @@
       </div>
     </div>
   </section>
-  <script>
+ <script>
     (() => {
       const mapEl = document.getElementById('liquid-glass-map');
-      const pill = document.querySelector('.liquid-pill');
-      if (!mapEl || !pill) return;
+      const pills = document.querySelectorAll('.liquid-pill');
+      if (!mapEl || !pills.length) return;
 
-      function syncGlassFilterSize() {
-        const rect = pill.getBoundingClientRect();
+      function syncGlassFilterSize(targetPill = pills[0]) {
+        const rect = targetPill.getBoundingClientRect();
         const w = Math.max(120, Math.round(rect.width));
         const h = Math.max(24, Math.round(rect.height));
         const svgEl = mapEl.closest('svg');
@@ -179,13 +185,17 @@
         }
         mapEl.setAttribute('width', String(w));
         mapEl.setAttribute('height', String(h));
-        pill.style.backdropFilter = 'none';
-        void pill.offsetHeight;
-        pill.style.backdropFilter = '';
+        targetPill.style.backdropFilter = 'none';
+        void targetPill.offsetHeight;
+        targetPill.style.backdropFilter = '';
       }
 
-      window.addEventListener('load', syncGlassFilterSize, { once: true });
-      window.addEventListener('resize', syncGlassFilterSize, { passive: true });
+      pills.forEach((pill) => {
+        pill.addEventListener('mouseenter', () => syncGlassFilterSize(pill));
+      });
+
+      window.addEventListener('load', () => syncGlassFilterSize(pills[0]), { once: true });
+      window.addEventListener('resize', () => syncGlassFilterSize(pills[0]), { passive: true });
     })();
   </script>
 </body>
