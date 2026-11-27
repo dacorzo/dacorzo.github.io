@@ -84,12 +84,12 @@
 
     <!-- Left Content Column -->
     <div class="max-w-7xl w-full mx-auto px-6 md:px-12 py-16 md:py-24 relative z-10 pointer-events-none">
-      <div class="max-w-xl lg:max-w-[540px] pointer-events-auto">
-        <h1 class="font-title text-5xl sm:text-6xl xl:text-[68px] leading-[1.06] tracking-tight text-cobalt">
+      <div class="max-w-lg lg:max-w-[500px] pointer-events-auto">
+        <h1 class="font-title text-5xl sm:text-6xl xl:text-[66px] leading-[1.06] tracking-tight text-cobalt">
           Solving today&rsquo;s problems for a <span class="italic font-normal">brighter tomorrow.</span>
         </h1>
 
-        <p class="mt-7 text-lg md:text-[19px] leading-relaxed text-cobalt/90">
+        <p class="mt-7 text-lg md:text-[18.5px] leading-relaxed text-cobalt/90">
           I build multidisciplinary solutions to a wide range of problems&mdash;from the most trivial everyday friction to the most transcendental challenges in finance, climate, and technology.
         </p>
 
@@ -104,13 +104,13 @@
       </div>
     </div>
 
-    <!-- Monumental Bottom-Right ASCII Globe (Matches target silhouette & crop) -->
+    <!-- Bottom-Right ASCII Globe (Goldilocks scale: big, cropped at bottom-right, zero text overlap) -->
     <div
       id="earth-wrapper"
       title="Drag to rotate, click to pause"
-      class="hidden md:block absolute right-[-14%] lg:right-[-11%] xl:right-[-8%] bottom-[-26%] lg:bottom-[-24%] z-0 cursor-grab active:cursor-grabbing select-none"
+      class="hidden md:block absolute right-[-18%] lg:right-[-15%] xl:right-[-12%] bottom-[-24%] lg:bottom-[-22%] z-0 cursor-grab active:cursor-grabbing select-none"
     >
-      <pre id="ascii-earth" class="text-[12px] lg:text-[13.5px] xl:text-[15px] text-cobalt/90"></pre>
+      <pre id="ascii-earth" class="text-[10.5px] lg:text-[11.5px] xl:text-[12.5px] text-cobalt/90"></pre>
     </div>
 
   </section>
@@ -329,7 +329,7 @@
     </div>
   </footer>
 
-  <!-- Monumental Rotating 3D ASCII Earth -->
+  <!-- Rotating 3D ASCII Earth -->
   <script>
     (async function () {
       const pre = document.getElementById('ascii-earth');
@@ -428,8 +428,7 @@
       const sinTilt = Math.sin(tilt);
 
       function renderFrame() {
-        // High-density 64-row sphere so it scales up monumentally without looking coarse
-        const rows = 64;
+        const rows = 54;
         const cols = Math.round(rows / charAspect);
 
         const lx = -0.55, ly = 0.42, lz = 0.72;
