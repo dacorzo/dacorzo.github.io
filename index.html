@@ -62,66 +62,73 @@
 
   <!-- Top Navigation -->
   <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-cobalt/20">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
       <a href="#" class="font-title text-xl tracking-tight text-cobalt">
         David Corzo
       </a>
 
-      <nav class="hidden sm:flex items-center gap-9 text-[15px]">
+      <nav class="hidden sm:flex items-center gap-10 text-[15px]">
         <a href="#work" class="hover:opacity-65 transition-opacity">Work</a>
         <a href="#background" class="hover:opacity-65 transition-opacity">Background</a>
         <a href="#capabilities" class="hover:opacity-65 transition-opacity">Capabilities</a>
       </nav>
 
-      <a href="mailto:hello@dacorzo.com" class="px-5 py-2 border border-cobalt text-sm hover:bg-cobalt hover:text-paper transition-colors">
-        Get in touch
+      <a href="mailto:hello@dacorzo.com" class="px-6 py-2.5 rounded-[20px] bg-cobalt text-paper text-sm hover:bg-cobaltHover transition-colors">
+        Let&rsquo;s get to know each other
       </a>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="border-b border-cobalt/20">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 pt-16 pb-20 md:pt-24 md:pb-28">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+  <!-- HERO SECTION: Oversized Headline + Dominant Bottom-Right ASCII Globe -->
+  <section class="relative border-b border-cobalt/20 overflow-hidden min-h-[calc(100vh-81px)] flex flex-col justify-between">
 
-        <!-- Left Editorial Column -->
-        <div class="lg:col-span-6 space-y-8">
-          <p class="text-sm tracking-wide text-cobalt/70">
-            Mexico City &mdash; Data Science &amp; Finance
+    <!-- Top Display Headline -->
+    <div class="max-w-7xl w-full mx-auto px-6 md:px-12 pt-12 md:pt-16 relative z-10">
+      <h1 class="font-title text-5xl sm:text-7xl lg:text-[84px] leading-[1.03] tracking-tight text-cobalt max-w-5xl">
+        Solving today&rsquo;s problems for a <span class="italic font-normal">brighter tomorrow.</span>
+      </h1>
+    </div>
+
+    <!-- Bottom Row: Left Subtitle & CTAs + Dominant Bottom-Right Globe -->
+    <div class="max-w-7xl w-full mx-auto px-6 md:px-12 pt-12 pb-14 md:pb-20 relative z-10 mt-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-10">
+
+        <!-- Left Editorial Copy & 20px Radius Buttons -->
+        <div class="lg:col-span-5 space-y-8 bg-paper/80 lg:bg-transparent backdrop-blur-[2px] lg:backdrop-blur-none p-2 lg:p-0">
+          <p class="text-lg md:text-[19px] leading-relaxed text-cobalt/90">
+            I build multidisciplinary solutions to a wide range of problems&mdash;from the most trivial everyday friction to the most transcendental challenges in finance, climate, and technology.
           </p>
 
-          <h1 class="font-title text-4xl sm:text-5xl md:text-[58px] leading-[1.08] tracking-tight text-cobalt">
-            Quantitative finance, data systems <span class="italic font-normal">&amp;</span> early-stage ventures.
-          </h1>
-
-          <p class="text-lg leading-relaxed text-cobalt/85 max-w-lg">
-            I study Data Science and Financial Management at ITAM, build venture intelligence pipelines at Climate Tech Venture Review, and co-founded Scout and La Fondita.
-          </p>
-
-          <div class="pt-2 flex flex-wrap items-center gap-4">
-            <a href="#work" class="px-7 py-3 bg-cobalt text-paper text-sm tracking-wide hover:bg-cobaltHover transition-colors">
-              Selected Work
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="mailto:hello@dacorzo.com" class="px-7 py-3.5 rounded-[20px] bg-cobalt text-paper text-[15px] hover:bg-cobaltHover transition-colors">
+              Let&rsquo;s get to know each other
             </a>
-            <a href="https://github.com/dacorzo" target="_blank" class="px-7 py-3 border border-cobalt text-cobalt text-sm tracking-wide hover:bg-cobalt/5 transition-colors">
-              GitHub
+            <a href="#work" class="px-7 py-3.5 rounded-[20px] border border-cobalt text-cobalt text-[15px] bg-paper/90 hover:bg-cobalt/5 transition-colors">
+              Explore my work
             </a>
           </div>
         </div>
 
-        <!-- Right Rotating ASCII Earth -->
-        <div class="lg:col-span-6 flex items-center justify-center lg:justify-end">
-          <div id="earth-wrapper" class="cursor-grab active:cursor-grabbing p-2" title="Drag to rotate, click to pause">
-            <pre id="ascii-earth" class="text-[8.5px] sm:text-[10px] md:text-[11.5px] text-cobalt"></pre>
-          </div>
-        </div>
+        <!-- Spacer for Desktop Globe Placement -->
+        <div class="hidden lg:block lg:col-span-7 min-h-[340px]"></div>
 
       </div>
     </div>
+
+    <!-- Dominant Bottom-Right Rotating ASCII Earth (0xLayer Composition) -->
+    <div
+      id="earth-wrapper"
+      title="Drag to rotate, click to pause"
+      class="relative lg:absolute lg:right-[-3%] lg:bottom-[-6%] z-0 flex justify-center lg:justify-end cursor-grab active:cursor-grabbing px-4 pb-6 lg:p-0 pointer-events-auto"
+    >
+      <pre id="ascii-earth" class="text-[8px] sm:text-[10.5px] md:text-[12px] xl:text-[13.5px] text-cobalt/95"></pre>
+    </div>
+
   </section>
 
   <!-- INVERTED NEGATIVE SECTION: SELECTED WORK -->
   <section id="work" class="cyanotype-negative text-paper border-b border-paper/20">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32">
 
       <div class="flex flex-col md:flex-row md:items-end justify-between pb-12 mb-14 border-b border-paper/20 gap-6">
         <div>
@@ -135,7 +142,6 @@
         </p>
       </div>
 
-      <!-- Clean Architectural Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 border-t border-l border-paper/25">
 
         <!-- Project 1 -->
@@ -153,7 +159,7 @@
 
           <div class="mt-10 pt-6 border-t border-paper/15 flex items-center justify-between text-sm">
             <span class="text-paper/65">Ranking Algorithms &middot; Product</span>
-            <a href="https://github.com/dacorzo" target="_blank" class="underline underline-offset-4 hover:opacity-75">
+            <a href="https://github.com/dacorzo" target="_blank" class="px-5 py-2 rounded-[20px] border border-paper/40 hover:bg-paper hover:text-cobalt transition-colors">
               View on GitHub &rarr;
             </a>
           </div>
@@ -174,7 +180,7 @@
 
           <div class="mt-10 pt-6 border-t border-paper/15 flex items-center justify-between text-sm">
             <span class="text-paper/65">Python &middot; SQL &middot; Tableau</span>
-            <a href="https://github.com/dacorzo" target="_blank" class="underline underline-offset-4 hover:opacity-75">
+            <a href="https://github.com/dacorzo" target="_blank" class="px-5 py-2 rounded-[20px] border border-paper/40 hover:bg-paper hover:text-cobalt transition-colors">
               Explore &rarr;
             </a>
           </div>
@@ -189,13 +195,13 @@
             </div>
             <h3 class="font-title text-3xl mb-4">La Fondita</h3>
             <p class="text-paper/85 text-base leading-relaxed">
-              A prepared meal-prep delivery venture in Mexico City serving university students and office workers—managing unit economics, batch production, and subscription logistics.
+              A prepared meal-prep delivery venture in Mexico City serving university students and office workers&mdash;managing unit economics, batch production, and subscription logistics.
             </p>
           </div>
 
           <div class="mt-10 pt-6 border-t border-paper/15 flex items-center justify-between text-sm">
             <span class="text-paper/65">Operations &middot; Unit Economics</span>
-            <a href="https://lafonditamx.com" target="_blank" class="underline underline-offset-4 hover:opacity-75">
+            <a href="https://lafonditamx.com" target="_blank" class="px-5 py-2 rounded-[20px] border border-paper/40 hover:bg-paper hover:text-cobalt transition-colors">
               lafonditamx.com &rarr;
             </a>
           </div>
@@ -216,7 +222,7 @@
 
           <div class="mt-10 pt-6 border-t border-paper/15 flex items-center justify-between text-sm">
             <span class="text-paper/65">NumPy &middot; SciPy &middot; Oracle &middot; Neo4j</span>
-            <a href="https://github.com/dacorzo" target="_blank" class="underline underline-offset-4 hover:opacity-75">
+            <a href="https://github.com/dacorzo" target="_blank" class="px-5 py-2 rounded-[20px] border border-paper/40 hover:bg-paper hover:text-cobalt transition-colors">
               Repositories &rarr;
             </a>
           </div>
@@ -228,7 +234,7 @@
 
   <!-- BACKGROUND & EDUCATION -->
   <section id="background" class="border-b border-cobalt/20">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-28">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
         <div class="lg:col-span-5 space-y-4">
@@ -241,11 +247,11 @@
         <div class="lg:col-span-7 divide-y divide-cobalt/20 border-t border-b border-cobalt/20">
           <div class="py-8">
             <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
-              <h3 class="font-title text-2xl">Instituto Tecnológico Autónomo de México (ITAM)</h3>
+              <h3 class="font-title text-2xl">Instituto Tecnol&oacute;gico Aut&oacute;nomo de M&eacute;xico (ITAM)</h3>
               <span class="text-sm text-cobalt/65">2024 &ndash; 2028</span>
             </div>
             <p class="text-base leading-relaxed text-cobalt/85">
-              Double major in Data Science (Ciencia de Datos) and Financial Management (Dirección Financiera). Co-organizer of the Mexican Economics &amp; Finance Olympiad.
+              Double major in Data Science (Ciencia de Datos) and Financial Management (Direcci&oacute;n Financiera). Co-organizer of the Mexican Economics &amp; Finance Olympiad.
             </p>
           </div>
 
@@ -266,7 +272,7 @@
 
   <!-- CAPABILITIES / STACK -->
   <section id="capabilities" class="border-b border-cobalt/20">
-    <div class="max-w-6xl mx-auto px-6 md:px-12 py-24 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-28">
       <div class="mb-12">
         <p class="text-sm text-cobalt/65 mb-3">03 &mdash; Capabilities</p>
         <h2 class="font-title text-3xl md:text-4xl">Technical &amp; Financial Stack</h2>
@@ -291,17 +297,21 @@
     </div>
   </section>
 
-  <!-- EDITORIAL FOOTER (Aboard / Sequel inspired) -->
+  <!-- EDITORIAL FOOTER -->
   <footer>
-    <div class="max-w-6xl mx-auto px-6 md:px-12 py-20">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-20">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-cobalt/20">
 
-        <div class="md:col-span-6 space-y-4">
+        <div class="md:col-span-6 space-y-5">
           <div class="font-title text-2xl">David Corzo</div>
           <p class="text-base text-cobalt/80 max-w-sm leading-relaxed">
-            Building analytical tools, climate tech infrastructure, and consumer ventures from Mexico City.
+            Solving today&rsquo;s problems for a brighter tomorrow&mdash;from Mexico City.
           </p>
-          <p class="text-sm text-cobalt/65 pt-2">&copy; 2026 David Corzo</p>
+          <div class="pt-1">
+            <a href="mailto:hello@dacorzo.com" class="inline-block px-6 py-2.5 rounded-[20px] bg-cobalt text-paper text-sm hover:bg-cobaltHover transition-colors">
+              Let&rsquo;s get to know each other
+            </a>
+          </div>
         </div>
 
         <div class="md:col-span-3 space-y-3 text-sm">
@@ -324,10 +334,13 @@
         </div>
 
       </div>
+      <div class="pt-8 text-sm text-cobalt/65">
+        &copy; 2026 David Corzo
+      </div>
     </div>
   </footer>
 
-  <!-- Rotating 3D ASCII Earth -->
+  <!-- Oversized Rotating 3D ASCII Earth -->
   <script>
     (async function () {
       const pre = document.getElementById('ascii-earth');
@@ -426,7 +439,8 @@
       const sinTilt = Math.sin(tilt);
 
       function renderFrame() {
-        const rows = window.innerWidth < 640 ? 28 : 36;
+        // Larger grid so the ASCII Earth commands the entire bottom-right quadrant
+        const rows = window.innerWidth < 640 ? 32 : 48;
         const cols = Math.round(rows / charAspect);
 
         const lx = -0.55, ly = 0.42, lz = 0.72;
