@@ -1,1 +1,146 @@
+:root {
+  --ink-dark: #0f172a;
+  --ink-muted: #334155;
+  --pin-gold: #e5a93c;
+  --sky-glass: rgba(255, 255, 255, 0.72);
+  --sky-border: rgba(255, 255, 255, 0.9);
+}
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--ink-dark);
+  background-color: #f7f5f0;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Anchors the city on the left and adds a subtle slow-drift motion */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/hero-city.webp');
+  background-size: cover;
+  background-position: 20% center;
+  z-index: 1;
+  animation: slowHorizon 28s ease-in-out infinite alternate;
+}
+
+@keyframes slowHorizon {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.035); }
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Keeps left side open for the city */
+  align-items: center;
+}
+
+.hero-content {
+  background: var(--sky-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--sky-border);
+  border-radius: 28px 6px 28px 6px; /* Asymmetric Tomorrowland curve */
+  padding: 2.75rem;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--pin-gold);
+  box-shadow: 0 0 8px var(--pin-gold);
+}
+
+h1 {
+  font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-bottom: 2rem;
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--ink-dark);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink-dark);
+  border: 1px solid rgba(15, 23, 42, 0.15);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding-top: 14rem; /* Leaves the top skyline visible on phones */
+  }
+}
