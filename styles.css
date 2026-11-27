@@ -212,8 +212,6 @@ h1 {
   height: 100%;
   object-fit: contain;
   border-radius: 50%;
-  /* Makes the black outer corners invisible on the blue background */
-  mix-blend-mode: lighten;
   filter: contrast(1.08);
   opacity: 0.92;
 }
